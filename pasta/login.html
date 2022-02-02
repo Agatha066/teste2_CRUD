@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Teste</title>
+		
+		<style>
+			.container {
+			 position: fixed;
+			 top: 50%;
+			 left: 50%;
+			 transform: translate(-50%, -50%);
+			 border: 1px solid black;
+			 margin: 10px;
+			 text-align:center;
+			}
+			img{
+				width: 25%;
+				height: 25%;
+				margin: 10px;
+				text-align: center;
+			}
+			.button1 {
+				background-color: blue;
+				color: white;
+				border: none;
+				text-align: center;
+				cursor: pointer;
+				text-decoration: none;
+				padding: 10px 15px;
+				margin: 4px 2px;
+				float: inline-start;
+			}
+			.button2 {
+				background-color: green;
+				color: white;
+				border: none;
+				text-align: center;
+				cursor: pointer;
+				text-decoration: none;
+				padding: 10px 15px;
+				margin: 4px 2px;
+				float: inline-start;
+			}
+			input {
+				cursor: pointer;
+				padding: 10px 15px;
+				margin: 4px 2px;
+				float: inline-start;
+			}
+			a{
+				text-decoration:none;
+				color: white;
+			}
+		</style>
+		<script>
+			function entrar()
+			{
+				
+				let xmlhttp = new XMLHttpRequest(); //inicia o objeto
+				
+				let email = document.getElementById("email").value;
+				
+				console.log("email: " + email);
+			
+				xmlhttp.onreadystatechange = function()//roda a funcao
+				{
+					if(this.readyState == 4 && this.status == 200)
+					{
+						console.log("Retorno: " + this.responseText);
+					}
+				}
+				xmlhttp.open("GET", "login.php?email=" + email, true);
+				xmlhttp.send();
+				console.log("Requisicao enviada");
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<img src="imagem/user.png"><br>
+			
+			<form action=""> 
+				<input id="email" type="text" placeholder="E-mail de cadastro">
+				<input id="senha" type="password" placeholder="Senha de acesso">
+				
+				<br><input type="button" value="ENTRAR NO SISTEMA" class="button1"  onclick="entrar()">
+				<br><button class="button2"><a href="cadastro.html">CADASTRAR USUÁRIO</a></button>
+			</form>	
+		</div>
+	</body>
+
+</html>
